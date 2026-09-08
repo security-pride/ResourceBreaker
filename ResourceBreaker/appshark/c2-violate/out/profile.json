@@ -1,0 +1,126 @@
+{
+    "AppInfo": {
+        "AppName": "",
+        "PackageName": "",
+        "min_sdk": 0,
+        "target_sdk": 0,
+        "versionCode": 0,
+        "versionName": "",
+        "classCount": 47942,
+        "methodCount": 341360,
+        "appsharkTakeTime": 766679
+    },
+    "ProcessMethodStatistics": {
+        "availableMethods": 341360,
+        "availableClasses": 47942,
+        "DirectCallGraph": 271201,
+        "HeirCallGraph": 271201,
+        "DirectReverseCallGraph": 241616,
+        "HeirReverseCallGraph": 306943
+    },
+    "totalRange": {
+        "startTime": "2026-04-29 00:08:07 847",
+        "takes": 766679
+    },
+    "fragments": {
+    },
+    "parseApk": {
+        "startTime": "2026-04-29 00:08:13 387",
+        "takes": 40
+    },
+    "preProcessor": {
+        "startTime": "2026-04-29 00:08:13 427",
+        "takes": 153389
+    },
+    "ruleAnalyzerCount": {
+        "PM_QueryResult_ResourceUsage": 2
+    },
+    "checkAndParseMethodSigInternalUse": 1643,
+    "taintAnalyzerCount": 2,
+    "twoStagePointerAnalyzeCount": 2,
+    "ptrLocalCount": 188536,
+    "ptrStaticFieldCount": 1656,
+    "ptrObjectFieldCount": 423729,
+    "objectCount": 36448,
+    "pointAnalyze": {
+        "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>- PM_QueryResult_ResourceUsage": {
+            "startTime": "2026-04-29 00:10:48 511",
+            "takes": 605963
+        },
+        "<CustomClass: void Main_Entry_com_android_server_notification_NotificationManagerService()>- PM_QueryResult_ResourceUsage": {
+            "startTime": "2026-04-29 00:10:48 511",
+            "takes": 408755
+        }
+    },
+    "taintPathCalc": {
+        "<CustomClass: void Main_Entry_com_android_server_notification_NotificationManagerService()>": {
+            "startTime": "2026-04-29 00:17:37 270",
+            "takes": 103
+        },
+        "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>": {
+            "startTime": "2026-04-29 00:20:54 475",
+            "takes": 50
+        }
+    },
+    "AnalyzeContextMap": {
+        "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>- PM_QueryResult_ResourceUsage": {
+            "reachableMethods": 9947,
+            "pointerToObjectSet": 96189,
+            "pointerFlowGraph": 325278,
+            "variableFlowGraph": 336968,
+            "objects": 18885,
+            "pointers": 392190
+        },
+        "<CustomClass: void Main_Entry_com_android_server_notification_NotificationManagerService()>- PM_QueryResult_ResourceUsage": {
+            "reachableMethods": 8641,
+            "pointerToObjectSet": 82141,
+            "pointerFlowGraph": 176350,
+            "variableFlowGraph": 185564,
+            "objects": 17584,
+            "pointers": 221349
+        }
+    },
+    "vulnerabilitiesCount": {
+        "total": 1,
+        "categoryMap": {
+            "PM_QueryResult_ResourceUsage": 1
+        }
+    },
+    "maxMemoryUsage": 9323991064,
+    "analyzers": [
+        {
+            "entry": "<CustomClass: void Main_Entry_com_android_server_notification_NotificationManagerService()>",
+            "rule": "PM_QueryResult_ResourceUsage",
+            "sourceSize": 343,
+            "sinkSize": 39,
+            "depth": 20,
+            "sources": [
+                "<android.app.ActivityThread: android.app.LoadedApk getPackageInfo(java.lang.String,android.content.res.CompatibilityInfo,int,int)>->r8_3",
+                "<android.content.Intent: android.content.ComponentName resolveSystemService(android.content.pm.PackageManager,int)>->$r3",
+                "<com.android.server.pm.permission.DefaultPermissionGrantPolicy$1: android.content.pm.PackageInfo getPackageInfo(java.lang.String)>->$r6"
+            ],
+            "sinks": [
+                "<com.android.server.trust.TrustManagerService: com.android.server.trust.TrustManagerService$SettingsAttrs getSettingsAttrs(android.content.pm.PackageManager,android.content.pm.ResolveInfo)>->$r4",
+                "<android.hardware.soundtrigger.KeyphraseEnrollmentInfo: android.hardware.soundtrigger.KeyphraseMetadata getKeyphraseMetadataFromApplicationInfo(android.content.pm.PackageManager,android.content.pm.ApplicationInfo,java.util.List)>->$r2",
+                "<android.service.quickaccesswallet.QuickAccessWalletServiceInfo: android.service.quickaccesswallet.QuickAccessWalletServiceInfo$ServiceMetadata parseServiceMetadata(android.content.Context,android.content.pm.ServiceInfo)>->r1"
+            ]
+        },
+        {
+            "entry": "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>",
+            "rule": "PM_QueryResult_ResourceUsage",
+            "sourceSize": 343,
+            "sinkSize": 39,
+            "depth": 20,
+            "sources": [
+                "<android.app.ActivityThread: android.app.LoadedApk getPackageInfo(java.lang.String,android.content.res.CompatibilityInfo,int,int)>->r8_3",
+                "<android.content.Intent: android.content.ComponentName resolveSystemService(android.content.pm.PackageManager,int)>->$r3",
+                "<com.android.server.pm.permission.DefaultPermissionGrantPolicy$1: android.content.pm.PackageInfo getPackageInfo(java.lang.String)>->$r6"
+            ],
+            "sinks": [
+                "<com.android.server.trust.TrustManagerService: com.android.server.trust.TrustManagerService$SettingsAttrs getSettingsAttrs(android.content.pm.PackageManager,android.content.pm.ResolveInfo)>->$r4",
+                "<android.hardware.soundtrigger.KeyphraseEnrollmentInfo: android.hardware.soundtrigger.KeyphraseMetadata getKeyphraseMetadataFromApplicationInfo(android.content.pm.PackageManager,android.content.pm.ApplicationInfo,java.util.List)>->$r2",
+                "<android.service.quickaccesswallet.QuickAccessWalletServiceInfo: android.service.quickaccesswallet.QuickAccessWalletServiceInfo$ServiceMetadata parseServiceMetadata(android.content.Context,android.content.pm.ServiceInfo)>->r1"
+            ]
+        }
+    ]
+}

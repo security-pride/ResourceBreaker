@@ -1,0 +1,74 @@
+{
+    "AppInfo": {
+        "AppName": "",
+        "PackageName": "",
+        "min_sdk": 0,
+        "target_sdk": 0,
+        "versionCode": 0,
+        "versionName": "",
+        "classCount": 47942,
+        "methodCount": 341360,
+        "appsharkTakeTime": 766679
+    },
+    "ManifestRisk": {
+    },
+    "SecurityInfo": {
+        "ResourceAnalysis": {
+            "PM_QueryResult_ResourceUsage": {
+                "category": "ResourceAnalysis",
+                "detail": "Detect resource reference fields by tracking PackageManager query results to resource APIs",
+                "name": "PM_QueryResult_ResourceUsage",
+                "possibility": "4",
+                "vulners": [
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r9 = virtualinvoke r4.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r6, \"android.view.im\")"
+                            ],
+                            "position": "<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodSettings queryInputMethodServicesInternal(android.content.Context,int,com.android.server.inputmethod.AdditionalSubtypeMap,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_inputmethod_InputMethodManagerService_Lifecycle()>",
+                            "Source": [
+                                "<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodSettings queryInputMethodServicesInternal(android.content.Context,int,com.android.server.inputmethod.AdditionalSubtypeMap,int)>->$r8"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/6-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodSettings queryInputMethodServicesInternal(android.content.Context,int,com.android.server.inputmethod.AdditionalSubtypeMap,int)>->$r8",
+                                "pf{obj{<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodSettings queryInputMethodServicesInternal(android.content.Context,int,com.android.server.inputmethod.AdditionalSubtypeMap,int)>:172=>java.util.List}(unknown)->@data}",
+                                "<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodMap filterInputMethodServices(com.android.server.inputmethod.AdditionalSubtypeMap,java.util.List,android.content.Context,java.util.List)>->$r7_1",
+                                "<com.android.server.inputmethod.InputMethodManagerService: com.android.server.inputmethod.InputMethodMap filterInputMethodServices(com.android.server.inputmethod.AdditionalSubtypeMap,java.util.List,android.content.Context,java.util.List)>->$r8",
+                                "<android.view.inputmethod.InputMethodInfo: void <init>(android.content.Context,android.content.pm.ResolveInfo,java.util.List)>->@parameter1",
+                                "<android.view.inputmethod.InputMethodInfo: void <init>(android.content.Context,android.content.pm.ResolveInfo,java.util.List)>->r2",
+                                "<android.view.inputmethod.InputMethodInfo: void <init>(android.content.Context,android.content.pm.ResolveInfo,java.util.List)>->r4"
+                            ]
+                        },
+                        "hash": "80e9549f2a65a47d13d57074c1de514f00e10350",
+                        "old_hash": "c2af3142813275afb441628ca16fcc36f6a4c5bd",
+                        "possibility": "4"
+                    }
+                ],
+                "wiki": "",
+                "deobfApk": ""
+            }
+        }
+    },
+    "DeepLinkInfo": {
+    },
+    "HTTP_API": [
+    ],
+    "JsBridgeInfo": [
+    ],
+    "BasicInfo": {
+        "ComponentsInfo": {
+        },
+        "JSNativeInterface": [
+        ]
+    },
+    "UsePermissions": [
+    ],
+    "DefinePermissions": {
+    },
+    "Profile": "/home/useraaa/appshark/out/vulnerability/7-profiler.json"
+}

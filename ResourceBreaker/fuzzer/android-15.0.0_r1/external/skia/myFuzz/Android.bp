@@ -1,0 +1,20 @@
+cc_binary_host {
+    name: "skia_codec_fuzzer",
+
+    defaults: ["skia_deps"],
+    srcs: ["skia_codec_fuzzer.cpp"],
+    sanitize: {
+        address: true,
+    },
+    cflags: [
+        "-O2",
+        "-g",
+    ],
+    static_libs: ["libskia"],
+    include_dirs: [
+        "external/skia",               // Skia 顶层
+        "external/skia/include",       // 核心头
+        "external/skia/include/core",  // SkCodec header
+        "external/skia/include/codec", // SkCodec, SkAndroidCodec
+    ],
+}

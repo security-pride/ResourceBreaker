@@ -1,0 +1,104 @@
+diff --git a/services/core/java/com/android/server/pm/ComputerEngine.java b/services/core/java/com/android/server/pm/ComputerEngine.java
+index ee0159d722b13..550f7668d3135 100644
+--- a/services/core/java/com/android/server/pm/ComputerEngine.java
++++ b/services/core/java/com/android/server/pm/ComputerEngine.java
+@@ -425,7 +425,7 @@ public class ComputerEngine implements Computer {
+     // PackageManagerService attributes that are primitives are referenced through the
+     // pms object directly.  Primitives are the only attributes so referenced.
+     protected final PackageManagerService mService;
+-    private boolean safeMode() {
++    public boolean safeMode() {
+         return mService.getSafeMode();
+     }
+     protected ComponentName resolveComponentName() {
+@@ -478,6 +478,9 @@ public class ComputerEngine implements Computer {
+         // Used to reference PMS attributes that are primitives and which are not
+         // updated under control of the PMS lock.
+         mService = args.service;
++
++        Log.e("C2-Snapshot", "new ComputerEngine safeMode=" + safeMode()
++                + " id=" + System.identityHashCode(this));
+     }
+ 
+     @Override
+@@ -530,6 +533,17 @@ public class ComputerEngine implements Computer {
+                 isImplicitImageCaptureIntentAndNotSetByDpc(intent, userId, resolvedType,
+                         flags));
+ 
++        Log.e("C2-queryIntentActivitiesInternal",
++                "Safemode=" + safeMode()
++                        + " flags=" + flags
++                        + " (0x" + Long.toHexString(flags) + ")"
++                        + ", GET_META_DATA=" + ((flags & PackageManager.GET_META_DATA) != 0)
++                        + ", MATCH_SYSTEM_ONLY=" + ((flags & PackageManager.MATCH_SYSTEM_ONLY) != 0));
++        Log.e("C2-queryIntentActivitiesInternal", "intent = " + intent);
++        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
++            Log.e("C2-queryIntentActivitiesInternal", e.toString());
++        }
++        
+         var args = new SaferIntentUtils.IntentArgs(intent, resolvedType,
+                 false /* isReceiver */, resolveForStart, filterCallingUid, callingPid);
+         args.platformCompat = mInjector.getCompatibility();
+@@ -658,6 +672,17 @@ public class ComputerEngine implements Computer {
+         flags = updateFlagsForResolve(flags, userId, callingUid, includeInstantApps,
+                 false /* isImplicitImageCaptureIntentAndNotSetByDpc */);
+ 
++        Log.e("C2-queryIntentServicesInternal",
++                "Safemode=" + safeMode()
++                        + " flags=" + flags
++                        + " (0x" + Long.toHexString(flags) + ")"
++                        + ", GET_META_DATA=" + ((flags & PackageManager.GET_META_DATA) != 0)
++                        + ", MATCH_SYSTEM_ONLY=" + ((flags & PackageManager.MATCH_SYSTEM_ONLY) != 0));
++        Log.e("C2-queryIntentServicesInternal", "intent = " + intent);
++        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
++            Log.e("C2-queryIntentServicesInternal", e.toString());
++        }
++
+         var args = new SaferIntentUtils.IntentArgs(intent, resolvedType,
+                 false /* isReceiver */, resolveForStart, callingUid, callingPid);
+         args.platformCompat = mInjector.getCompatibility();
+diff --git a/services/core/java/com/android/server/pm/ResolveIntentHelper.java b/services/core/java/com/android/server/pm/ResolveIntentHelper.java
+index 5b4f310655cda..500dd5b534cb7 100644
+--- a/services/core/java/com/android/server/pm/ResolveIntentHelper.java
++++ b/services/core/java/com/android/server/pm/ResolveIntentHelper.java
+@@ -349,6 +349,20 @@ final class ResolveIntentHelper {
+                 false /*includeInstantApps*/,
+                 computer.isImplicitImageCaptureIntentAndNotSetByDpc(intent, userId,
+                         resolvedType, flags));
++
++        Log.e("C2-queryIntentReceiversInternal",
++                    "Safemode=" + ((ComputerEngine)computer).safeMode()
++                            + " id=" + System.identityHashCode(computer)
++                            +
++                " flags=" + flags
++                        + " (0x" + Long.toHexString(flags) + ")"
++                        + ", GET_META_DATA=" + ((flags & PackageManager.GET_META_DATA) != 0)
++                        + ", MATCH_SYSTEM_ONLY=" + ((flags & PackageManager.MATCH_SYSTEM_ONLY) != 0));
++        Log.e("C2-queryIntentReceiversInternal", "intent = " + intent);
++        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
++            Log.e("C2-queryIntentReceiversInternal", e.toString());
++        }
++
+         Intent originalIntent = null;
+         ComponentName comp = intent.getComponent();
+         if (comp == null) {
+@@ -465,6 +479,19 @@ final class ResolveIntentHelper {
+         final String instantAppPkgName = computer.getInstantAppPackageName(callingUid);
+         flags = computer.updateFlagsForResolve(flags, userId, callingUid, false /*includeInstantApps*/,
+                 false /* isImplicitImageCaptureIntentAndNotSetByDpc */);
++                
++        Log.e("C2-queryIntentContentProvidersInternal",
++                "Safemode=" + ((ComputerEngine)computer).safeMode()
++                        +
++                " flags=" + flags
++                        + " (0x" + Long.toHexString(flags) + ")"
++                        + ", GET_META_DATA=" + ((flags & PackageManager.GET_META_DATA) != 0)
++                        + ", MATCH_SYSTEM_ONLY=" + ((flags & PackageManager.MATCH_SYSTEM_ONLY) != 0));
++        Log.e("C2-queryIntentContentProvidersInternal", "intent = " + intent);
++        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
++            Log.e("C2-queryIntentContentProvidersInternal", e.toString());
++        }
++        
+         ComponentName comp = intent.getComponent();
+         if (comp == null) {
+             if (intent.getSelector() != null) {

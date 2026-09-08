@@ -1,0 +1,546 @@
+{
+    "AppInfo": {
+        "AppName": "",
+        "PackageName": "",
+        "min_sdk": 0,
+        "target_sdk": 0,
+        "versionCode": 0,
+        "versionName": "",
+        "classCount": 47942,
+        "methodCount": 341360,
+        "appsharkTakeTime": 981572
+    },
+    "ManifestRisk": {
+    },
+    "SecurityInfo": {
+        "ResourceAnalysis": {
+            "PM_QueryResult_ResourceUsage": {
+                "category": "ResourceAnalysis",
+                "detail": "Detect resource reference fields by tracking PackageManager query results to resource APIs",
+                "name": "PM_QueryResult_ResourceUsage",
+                "possibility": "4",
+                "vulners": [
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r13 = virtualinvoke $r11.<android.content.pm.ApplicationInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r10, \"android.game_mode_config\")"
+                            ],
+                            "position": "<com.android.server.app.GameManagerService$GamePackageConfiguration: void <init>(android.content.pm.PackageManager,java.lang.String,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_app_GameManagerService_Lifecycle()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_app_GameManagerService_Lifecycle()>",
+                            "Source": [
+                                "$r7 = virtualinvoke $r3.<android.content.pm.PackageManager: android.content.pm.ApplicationInfo getApplicationInfoAsUser(java.lang.String,int,int)>($r4, 128, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/2-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.app.GameManagerService$GamePackageConfiguration: void <init>(android.content.pm.PackageManager,java.lang.String,int)>->$r7",
+                                "<com.android.server.app.GameManagerService$GamePackageConfiguration: boolean parseInterventionFromXml(android.content.pm.PackageManager,android.content.pm.ApplicationInfo,java.lang.String)>->@parameter1",
+                                "<com.android.server.app.GameManagerService$GamePackageConfiguration: boolean parseInterventionFromXml(android.content.pm.PackageManager,android.content.pm.ApplicationInfo,java.lang.String)>->$r11"
+                            ]
+                        },
+                        "hash": "854fc50ee8f07165089b3d50855d815e23c80044",
+                        "old_hash": "c73fde4aa648b61d2e31c426d0c4bfb5b54754fb",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r5 = virtualinvoke $r3.<android.content.pm.ActivityInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r4, $r0)"
+                            ],
+                            "position": "<com.android.server.appwidget.AppWidgetServiceImpl: int readProfileStateFromFileLocked(java.io.FileInputStream,int,java.util.List)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_appwidget_AppWidgetService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_appwidget_AppWidgetService()>",
+                            "Source": [
+                                "$r10 = virtualinvoke r0.<com.android.server.appwidget.AppWidgetServiceImpl: android.content.pm.ActivityInfo getProviderInfo(android.content.ComponentName,int)>($r9_2, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/11-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.appwidget.AppWidgetServiceImpl: int readProfileStateFromFileLocked(java.io.FileInputStream,int,java.util.List)>->$r10",
+                                "pf{obj{<com.android.server.appwidget.AppWidgetServiceImpl: int readProfileStateFromFileLocked(java.io.FileInputStream,int,java.util.List)>:50=>android.appwidget.AppWidgetProviderInfo}(android.content.pm.ActivityInfo)->providerInfo}",
+                                "<com.android.server.appwidget.AppWidgetServiceImpl$Provider: android.appwidget.AppWidgetProviderInfo getInfoLocked(android.content.Context)>->$r5_2",
+                                "<com.android.server.appwidget.AppWidgetServiceImpl: android.appwidget.AppWidgetProviderInfo '-$$Nest$smparseAppWidgetProviderInfo'(android.content.Context,com.android.server.appwidget.AppWidgetServiceImpl$ProviderId,android.content.pm.ActivityInfo,java.lang.String)>->@parameter2",
+                                "<com.android.server.appwidget.AppWidgetServiceImpl: android.appwidget.AppWidgetProviderInfo '-$$Nest$smparseAppWidgetProviderInfo'(android.content.Context,com.android.server.appwidget.AppWidgetServiceImpl$ProviderId,android.content.pm.ActivityInfo,java.lang.String)>->$r1",
+                                "<com.android.server.appwidget.AppWidgetServiceImpl: android.appwidget.AppWidgetProviderInfo parseAppWidgetProviderInfo(android.content.Context,com.android.server.appwidget.AppWidgetServiceImpl$ProviderId,android.content.pm.ActivityInfo,java.lang.String)>->@parameter2",
+                                "<com.android.server.appwidget.AppWidgetServiceImpl: android.appwidget.AppWidgetProviderInfo parseAppWidgetProviderInfo(android.content.Context,com.android.server.appwidget.AppWidgetServiceImpl$ProviderId,android.content.pm.ActivityInfo,java.lang.String)>->$r3"
+                            ]
+                        },
+                        "hash": "bdc5699cf85edd21d540f42c599c95d23344c726",
+                        "old_hash": "c6d7efa2be379af81c4db65eed04265a198eb8a0",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r5 = virtualinvoke r1.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>(r2, \"android.credentials.provider\")"
+                            ],
+                            "position": "<android.service.credentials.CredentialProviderInfoFactory: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_credentials_CredentialManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_credentials_CredentialManagerService()>",
+                            "Source": [
+                                "$r2 = interfaceinvoke $r1.<android.content.pm.IPackageManager: android.content.pm.ServiceInfo getServiceInfo(android.content.ComponentName,long,int)>($r0, 128L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/3-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo create(android.content.Context,android.content.ComponentName,int,boolean,boolean)>->$r2",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo create(android.content.Context,android.content.pm.ServiceInfo,boolean,boolean,boolean,boolean)>->@parameter1",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo create(android.content.Context,android.content.pm.ServiceInfo,boolean,boolean,boolean,boolean)>->$r1",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo$Builder populateMetadata(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo$Builder populateMetadata(android.content.Context,android.content.pm.ServiceInfo)>->$r1",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo$Builder extractXmlMetadata(android.content.Context,android.content.pm.ServiceInfo,android.content.pm.PackageManager,android.content.res.Resources)>->@parameter1",
+                                "<android.service.credentials.CredentialProviderInfoFactory: android.credentials.CredentialProviderInfo$Builder extractXmlMetadata(android.content.Context,android.content.pm.ServiceInfo,android.content.pm.PackageManager,android.content.res.Resources)>->r1"
+                            ]
+                        },
+                        "hash": "aa134d8cca538503f7156ecfc5d5e920a5fd0d4c",
+                        "old_hash": "63b7d61bc9fee01026e00f22b23d5cd1f0323513",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r10 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r9, \"android.autofill\")"
+                            ],
+                            "position": "<com.android.server.autofill.RemoteAugmentedAutofillService: android.util.Pair getComponentName(java.lang.String,int,boolean)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>",
+                            "Source": [
+                                "<com.android.server.autofill.RemoteAugmentedAutofillService: android.util.Pair getComponentName(java.lang.String,int,boolean)>->$r3"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/15-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.autofill.RemoteAugmentedAutofillService: android.util.Pair getComponentName(java.lang.String,int,boolean)>->$r3",
+                                "pf{obj{<com.android.server.autofill.RemoteAugmentedAutofillService: android.util.Pair getComponentName(java.lang.String,int,boolean)>:172=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.os.Message: android.os.Message obtain(android.os.Message)>->$i0",
+                                "pf{obj{<android.database.MatrixCursor: java.lang.String getString(int)>:6=>java.lang.String}(unknown)->@data}",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r8",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r6_2",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->@parameter1",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->$r2",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<android.service.autofill.AutofillServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.ComponentName,int)>->$r3",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "f2cb74cd8b2f8603cc281e10f1d9b62d16685f54",
+                        "old_hash": "9f5b63ed968ed8dbdf72a04875f690b511d74e31",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r5 = virtualinvoke r2_1.<android.content.pm.ActivityInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r3, \"android.app.device_admin\")"
+                            ],
+                            "position": "<com.android.server.devicepolicy.DevicePolicyManagerService: android.content.pm.ActivityInfo lambda$findAdmin$5(android.content.ComponentName,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_devicepolicy_DevicePolicyManagerService_Lifecycle()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_devicepolicy_DevicePolicyManagerService_Lifecycle()>",
+                            "Source": [
+                                "$r0 = interfaceinvoke r3.<android.content.pm.IPackageManager: android.content.pm.ActivityInfo getReceiverInfo(android.content.ComponentName,long,int)>($r2, 819328L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/19-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.devicepolicy.DevicePolicyManagerService: android.content.pm.ActivityInfo lambda$findAdmin$5(android.content.ComponentName,int)>->$r0",
+                                "<com.android.server.devicepolicy.DevicePolicyManagerService: android.content.pm.ActivityInfo $r8$lambda$X-RlujD-PcvLmVkLJrv7si8_a4E(com.android.server.devicepolicy.DevicePolicyManagerService,android.content.ComponentName,int)>->$r1",
+                                "<com.android.server.devicepolicy.DevicePolicyManagerService$$ExternalSyntheticLambda64: java.lang.Object getOrThrow()>->$r2",
+                                "<com.android.server.devicepolicy.DevicePolicyManagerService: android.app.admin.DeviceAdminInfo findAdmin(android.content.ComponentName,int,boolean)>->$r4",
+                                "<com.android.server.devicepolicy.DevicePolicyManagerService: android.app.admin.DeviceAdminInfo findAdmin(android.content.ComponentName,int,boolean)>->$r5",
+                                "<android.app.admin.DeviceAdminInfo: void <init>(android.content.Context,android.content.pm.ActivityInfo)>->@parameter1",
+                                "<android.app.admin.DeviceAdminInfo: void <init>(android.content.Context,android.content.pm.ActivityInfo)>->r2",
+                                "pf{obj{<com.android.server.devicepolicy.DevicePolicyManagerService: android.app.admin.DeviceAdminInfo findAdmin(android.content.ComponentName,int,boolean)>:29=>android.app.admin.DeviceAdminInfo}(android.content.pm.ActivityInfo)->mActivityInfo}",
+                                "<android.app.admin.DeviceAdminInfo: void <init>(android.content.Context,android.content.pm.ActivityInfo)>->r2_1"
+                            ]
+                        },
+                        "hash": "3d8f09f12e2ee2f19d6e32386e02e4846dffa189",
+                        "old_hash": "52bab2fc25bd58ffc1fd73f92e2e3296db25756d",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "$r16_8 = virtualinvoke $r12_6.<android.service.voice.VoiceInteractionServiceInfo: android.content.pm.ServiceInfo getServiceInfo()>()"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/8-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r16_8",
+                                "pf{obj{<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>:1028=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.content.ComponentName: void appendShortClassName(java.lang.StringBuilder,java.lang.String,java.lang.String)>->$i0",
+                                "pf{obj{<CustomClass: void Main_Entry_CustomClass()>:2358=>android.os.Parcelable}(unknown)->@data}",
+                                "<android.content.ComponentName: android.content.ComponentName unflattenFromString(java.lang.String)>->$i0",
+                                "pf{obj{<android.util.ArrayMap: void <clinit>()>:1=>int[]}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_1",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "8c3844dc00b318320ffa26b8f263510d45805360",
+                        "old_hash": "61a282d7e8d1492afe489d7ac8751ac29cb4b5c3",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.service.voice.VoiceInteractionServiceInfo findAvailInteractor(int,java.lang.String)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.service.voice.VoiceInteractionServiceInfo findAvailInteractor(int,java.lang.String)>->$r14_1"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/6-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.service.voice.VoiceInteractionServiceInfo findAvailInteractor(int,java.lang.String)>->$r14_1",
+                                "pf{obj{<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.service.voice.VoiceInteractionServiceInfo findAvailInteractor(int,java.lang.String)>:112=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.content.ComponentName: void appendShortClassName(java.lang.StringBuilder,java.lang.String,java.lang.String)>->$i0",
+                                "pf{obj{<CustomClass: void Main_Entry_CustomClass()>:2358=>android.os.Parcelable}(unknown)->@data}",
+                                "<android.content.ComponentName: android.content.ComponentName unflattenFromString(java.lang.String)>->$i0",
+                                "pf{obj{<android.util.ArrayMap: void <clinit>()>:1=>int[]}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_1",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "890caa5296de23f7d6f5332279634a117f71d403",
+                        "old_hash": "3f6e6db6894eea0b84a2754875332ec5463e628b",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>->$r11_1"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/4-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>->$r11_1",
+                                "pf{obj{<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>:0=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.content.ComponentName: void appendShortClassName(java.lang.StringBuilder,java.lang.String,java.lang.String)>->$i0",
+                                "pf{obj{<CustomClass: void Main_Entry_CustomClass()>:2358=>android.os.Parcelable}(unknown)->@data}",
+                                "<android.content.ComponentName: android.content.ComponentName unflattenFromString(java.lang.String)>->$i0",
+                                "pf{obj{<android.util.ArrayMap: void <clinit>()>:1=>int[]}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_1",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "0b7914543a5eb83d71282dd081af74a28f984a01",
+                        "old_hash": "2b49a4107f177ea13eb30981a2b24c89d8358096",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>->$r11_3"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/5-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>->$r11_3",
+                                "pf{obj{<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: android.content.ComponentName findAvailRecognizer(java.lang.String,int)>:2=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.content.ComponentName: void appendShortClassName(java.lang.StringBuilder,java.lang.String,java.lang.String)>->$i0",
+                                "pf{obj{<CustomClass: void Main_Entry_CustomClass()>:2358=>android.os.Parcelable}(unknown)->@data}",
+                                "<android.content.ComponentName: android.content.ComponentName unflattenFromString(java.lang.String)>->$i0",
+                                "pf{obj{<android.util.ArrayMap: void <clinit>()>:1=>int[]}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_1",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "0b0bf9360ae1b2c39b7747085568635ab57321d8",
+                        "old_hash": "28d6f1423dfc2e59a5d4e05342a3bb78149c07f2",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r10 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r9, \"android.autofill\")"
+                            ],
+                            "position": "<android.app.ContextImpl: android.content.res.Resources createWindowContextResources(android.app.ContextImpl)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>",
+                            "Source": [
+                                "<android.app.ContextImpl: android.content.res.Resources createWindowContextResources(android.app.ContextImpl)>->$r8"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/16-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<android.app.ContextImpl: android.content.res.Resources createWindowContextResources(android.app.ContextImpl)>->$r8",
+                                "pf{obj{<android.app.ContextImpl: android.content.res.Resources createWindowContextResources(android.app.ContextImpl)>:284=>android.content.pm.ApplicationInfo}(unknown)->@data}",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r8",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r6_2",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->@parameter1",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->$r2",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<android.service.autofill.AutofillServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.ComponentName,int)>->$r3",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "e40f33f903a7d21e956c858c807680a5bbfe924e",
+                        "old_hash": "663ef788cbaf21cede02db406416747ea033f633",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r5 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>(r1, \"android.voice_interaction\")"
+                            ],
+                            "position": "<android.service.voice.VoiceInteractionServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "$r2 = interfaceinvoke $r1.<android.content.pm.IPackageManager: android.content.pm.ServiceInfo getServiceInfo(android.content.ComponentName,long,int)>($r0, 786560L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/9-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<android.service.voice.VoiceInteractionServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.voice.VoiceInteractionServiceInfo: void <init>(android.content.pm.PackageManager,android.content.ComponentName,int)>->$r3",
+                                "<android.service.voice.VoiceInteractionServiceInfo: void <init>(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.voice.VoiceInteractionServiceInfo: void <init>(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "be8fb4ea702683d8fd0b2332e9cd3added5bd60f",
+                        "old_hash": "337c034811a6980a94cfb44b4542933b5e9b1df3",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r6 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r5, \"android.content_capture\")"
+                            ],
+                            "position": "<android.service.contentcapture.ContentCaptureServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,boolean,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_contentcapture_ContentCaptureManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_contentcapture_ContentCaptureManagerService()>",
+                            "Source": [
+                                "$r3 = interfaceinvoke $r2.<android.content.pm.IPackageManager: android.content.pm.ServiceInfo getServiceInfo(android.content.ComponentName,long,int)>($r0, $l2, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/1-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<android.service.contentcapture.ContentCaptureServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,boolean,int)>->$r3",
+                                "<android.service.contentcapture.ContentCaptureServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,boolean,int)>->r1_2",
+                                "<android.service.contentcapture.ContentCaptureServiceInfo: void <init>(android.content.Context,android.content.ComponentName,boolean,int)>->$r3",
+                                "<android.service.contentcapture.ContentCaptureServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.contentcapture.ContentCaptureServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "0332148f0c507ec5afcb5661f1c6b8f5e03f377d",
+                        "old_hash": "d1829a4613f385dc82443356edbd67187c5b262f",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$r6"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/7-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$r6",
+                                "pf{obj{<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>:680=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_7",
+                                "pf{obj{<CustomClass: void Main_Entry_CustomClass()>:1842=>java.lang.Object[]}(unknown)->@data}",
+                                "<android.content.ComponentName: android.content.ComponentName unflattenFromString(java.lang.String)>->$i0",
+                                "pf{obj{<android.util.ArrayMap: void <clinit>()>:1=>int[]}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void switchImplementationIfNeededNoTracingLocked(boolean)>->$i0_1",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "160f34b9c107579b56962ca5e948eda8bb4efafa",
+                        "old_hash": "ef73d915374412d6276deb33be5bb9f00d758a15",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r5 = virtualinvoke $r0.<android.content.pm.ActivityInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r4, $r1)"
+                            ],
+                            "position": "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo injectGetActivityInfoWithMetadataWithUninstalled(android.content.ComponentName,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_pm_ShortcutService_Lifecycle()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_pm_ShortcutService_Lifecycle()>",
+                            "Source": [
+                                "$r3 = interfaceinvoke $r2.<android.content.pm.IPackageManager: android.content.pm.ActivityInfo getActivityInfo(android.content.ComponentName,long,int)>($r1, 795264L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/20-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo injectGetActivityInfoWithMetadataWithUninstalled(android.content.ComponentName,int)>->$r3",
+                                "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo getActivityInfoWithMetadata(android.content.ComponentName,int)>->$r2",
+                                "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo isInstalledOrNull(android.content.pm.ActivityInfo)>->@parameter0",
+                                "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo isInstalledOrNull(android.content.pm.ActivityInfo)>->$r0",
+                                "<com.android.server.pm.ShortcutService: android.content.pm.ActivityInfo getActivityInfoWithMetadata(android.content.ComponentName,int)>->$r2_1",
+                                "<com.android.server.pm.ShortcutParser: java.util.List parseShortcuts(com.android.server.pm.ShortcutService,java.lang.String,int,java.util.List)>->$r7_2",
+                                "<com.android.server.pm.ShortcutParser: java.util.List parseShortcutsOneFile(com.android.server.pm.ShortcutService,android.content.pm.ActivityInfo,java.lang.String,int,java.util.List,java.util.List)>->@parameter1",
+                                "<com.android.server.pm.ShortcutParser: java.util.List parseShortcutsOneFile(com.android.server.pm.ShortcutService,android.content.pm.ActivityInfo,java.lang.String,int,java.util.List,java.util.List)>->$r1",
+                                "<com.android.server.pm.ShortcutService: android.content.res.XmlResourceParser injectXmlMetaData(android.content.pm.ActivityInfo,java.lang.String)>->@parameter0",
+                                "<com.android.server.pm.ShortcutService: android.content.res.XmlResourceParser injectXmlMetaData(android.content.pm.ActivityInfo,java.lang.String)>->$r0"
+                            ]
+                        },
+                        "hash": "dc15f6738138b0f33c83d4a9336a7faeea5dd119",
+                        "old_hash": "a14ed716c46225ed08e485719a48567b34c29952",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r10 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r9, \"android.autofill\")"
+                            ],
+                            "position": "<android.service.autofill.AutofillServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>",
+                            "Source": [
+                                "$r2 = interfaceinvoke $r1.<android.content.pm.IPackageManager: android.content.pm.ServiceInfo getServiceInfo(android.content.ComponentName,long,int)>($r0, 128L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/17-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<android.service.autofill.AutofillServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.ComponentName,int)>->$r3",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "32197261e0644cc38e5ae09d36a9b07200fcc0c2",
+                        "old_hash": "77c3899c1dec22cbb1d29e53920b7b41c3339c06",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r10 = virtualinvoke r2.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r9, \"android.autofill\")"
+                            ],
+                            "position": "<com.android.server.autofill.RemoteInlineSuggestionRenderService: android.content.ComponentName getServiceComponentName(android.content.Context,int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_autofill_AutofillManagerService()>",
+                            "Source": [
+                                "<com.android.server.autofill.RemoteInlineSuggestionRenderService: android.content.ComponentName getServiceComponentName(android.content.Context,int)>->$r1"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/18-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.autofill.RemoteInlineSuggestionRenderService: android.content.ComponentName getServiceComponentName(android.content.Context,int)>->$r1",
+                                "pf{obj{<com.android.server.autofill.RemoteInlineSuggestionRenderService: android.content.ComponentName getServiceComponentName(android.content.Context,int)>:766=>android.content.pm.ServiceInfo}(unknown)->@data}",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r8",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerPathsFromSettings(android.os.Bundle,android.content.pm.IPackageManager,java.lang.String,android.content.pm.ApplicationInfo)>->$r6_2",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->@parameter1",
+                                "<android.os.GraphicsEnvironment: java.lang.String getDebugLayerAppPaths(android.content.pm.IPackageManager,java.lang.String)>->$r2",
+                                "pf{obj{<android.content.pm.IPackageManager$Stub: android.content.pm.IPackageManager asInterface(android.os.IBinder)>:10=>android.content.pm.IPackageManager$Stub$Proxy}(unknown)->@data}",
+                                "<android.service.autofill.AutofillServiceInfo: android.content.pm.ServiceInfo getServiceInfoOrThrow(android.content.ComponentName,int)>->$r2",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.ComponentName,int)>->$r3",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<android.service.autofill.AutofillServiceInfo: void <init>(android.content.Context,android.content.pm.ServiceInfo)>->r2"
+                            ]
+                        },
+                        "hash": "c831f5c7cc2306598ac9071c02b3e1bbfa714715",
+                        "old_hash": "ad187cd882fcdf9270079eb539ca34d03bc5a00b",
+                        "possibility": "4"
+                    },
+                    {
+                        "details": {
+                            "Sink": [
+                                "$r2 = virtualinvoke $r0.<android.content.pm.ServiceInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>($r1, \"android.speech\")"
+                            ],
+                            "position": "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>",
+                            "allEntryMethods": [
+                                "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>"
+                            ],
+                            "entryMethod": "<CustomClass: void Main_Entry_com_android_server_voiceinteraction_VoiceInteractionManagerService()>",
+                            "Source": [
+                                "$r15 = interfaceinvoke $r14.<android.content.pm.IPackageManager: android.content.pm.ServiceInfo getServiceInfo(android.content.ComponentName,long,int)>($r10_4, 786560L, $i0)"
+                            ],
+                            "url": "/home/useraaa/appshark/out/vulnerability/10-PM_QueryResult_ResourceUsage.html",
+                            "target": [
+                                "<com.android.server.voiceinteraction.VoiceInteractionManagerService$VoiceInteractionManagerServiceStub: void initForUserNoTracing(int)>->$r15",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->@parameter1",
+                                "<com.android.server.voiceinteraction.RecognitionServiceInfo: com.android.server.voiceinteraction.RecognitionServiceInfo parseInfo(android.content.pm.PackageManager,android.content.pm.ServiceInfo)>->$r0"
+                            ]
+                        },
+                        "hash": "4c299486a31eddc021c91f8052a8585b4eaf4968",
+                        "old_hash": "59aac577fed2ee372395f6705cb0b80ee3e7ecb6",
+                        "possibility": "4"
+                    }
+                ],
+                "wiki": "",
+                "deobfApk": ""
+            }
+        }
+    },
+    "DeepLinkInfo": {
+    },
+    "HTTP_API": [
+    ],
+    "JsBridgeInfo": [
+    ],
+    "BasicInfo": {
+        "ComponentsInfo": {
+        },
+        "JSNativeInterface": [
+        ]
+    },
+    "UsePermissions": [
+    ],
+    "DefinePermissions": {
+    },
+    "Profile": "/home/useraaa/appshark/out/vulnerability/25-profiler.json"
+}

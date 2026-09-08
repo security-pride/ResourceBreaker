@@ -1,0 +1,7 @@
+{
+  "target": [
+    "/Users/userxxx/someFramework/aosp15/framework.apk",
+    "/Users/userxxx/someFramework/aosp15/services.apk"
+  ],
+  "androidJarPath": "/Users/userxxx/Library/Android/sdk/platforms/android-34/android.jar"
+}

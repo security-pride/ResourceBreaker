@@ -1,0 +1,419 @@
+{
+  "PM_QueryResult_ResourceUsage": {
+    "DirectMode": true,
+    "traceDepth": 20,
+    "PrimTypeAsTaint": false,
+    "PolymorphismBackTrace": false,
+    "desc": {
+      "name": "PM_QueryResult_ResourceUsage",
+      "category": "ResourceAnalysis",
+      "detail": "Detect resource reference fields by tracking PackageManager query results to resource APIs",
+      "wiki": "",
+      "possibility": "4"
+    },
+ 
+     "IgnoreBody": {
+      "MethodSignature": [
+        "<android.content.pm.PackageItemInfo: android.content.res.XmlResourceParser loadXmlMetaData(android.content.pm.PackageManager,java.lang.String)>",
+        // "<android.content.pm.IPackageManager$Stub: boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)>",
+        "<android.content.pm.PackageItemInfo: java.lang.CharSequence loadUnsafeLabel(android.content.pm.PackageManager)>",
+        "<android.content.RestrictionsManager: java.util.List getManifestRestrictions(java.lang.String)>",
+        "<android.widget.RemoteViews: void <init>(java.lang.String,int)>",
+        "<android.app.AliasActivity: void onCreate(android.os.Bundle)>",
+        "<android.app.LoadedApk: java.lang.String[] getLibrariesFor(java.lang.String)>",
+        "<android.content.pm.ApplicationInfo: int getLocaleConfigRes()>",
+        "<android.app.AliasActivity: void onCreate(android.os.Bundle)>",
+        "<android.content.pm.PackageItemInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>",
+        "<android.app.Notification: java.lang.String loadHeaderAppName(android.content.Context)>",
+        "<com.android.server.servicewatcher.ServiceWatcherImpl: void onServiceChanged(boolean)>"
+      ],
+      "MethodName": ["onTransact","getInputUid","initConfigurationTracker","newUnpaddedIntArray","scheduleSync","getIdentifier"]
+    },
+    
+    "entry": {
+      "SystemServices": true,
+      // "methods": [
+      //   "<CustomClass: void Main_Entry_com_android_server_print_PrintManagerService()>"
+      // ]
+    },
+    "source": {
+      "TaintFields": true,
+      "Return": [
+        // ============ 单个 Info 返回 ============
+
+        // PackageInfo
+       "<*: * getPackageInfo(*)>",
+//        "<*: * getPackageInfoVersioned(*)>",
+//        "<*: * getPackageInfoAsUser(*)>",
+
+        // ApplicationInfo
+      //  "<*: * getApplicationInfo(*)>",
+      //  "<*: * getApplicationInfoAsUser(*)>",
+
+        // ActivityInfo (包括 Receiver)
+      //  "<*: * getActivityInfo(*)>",
+      //  "<*: * getReceiverInfo(*)>",
+
+        // ServiceInfo
+        // "<*: * getServiceInfo(*)>",
+
+        // ProviderInfo
+      //  "<*: * getProviderInfo(*)>",
+        // "<*: * resolveContentProvider(*)>",
+        // "<*: * resolveContentProviderAsUser(*)>",
+        // "<*: * resolveContentProviderForUid(*)>",
+
+        // InstrumentationInfo
+        // "<*: * getInstrumentationInfo(*)>",
+        // "<*: * getInstrumentationInfoAsUser(*)>",
+
+        // ModuleInfo
+        // "<*: * getModuleInfo(*)>",
+
+        // InstallSourceInfo
+        // "<*: * getInstallSourceInfo(*)>",
+
+        // PermissionInfo
+        // "<*: * getPermissionInfo(*)>",
+
+        // PermissionGroupInfo
+        // "<*: * getPermissionGroupInfo(*)>",
+
+        // ============ ResolveInfo 返回 ============
+        // "<*: * resolveActivity(*)>",
+        // "<*: * resolveActivityAsUser(*)>",
+        // "<*: * resolveService(*)>",
+        // "<*: * resolveServiceAsUser(*)>",
+        // "<*: * findPersistentPreferredActivity(*)>",
+        // "<*: * getLastChosenActivity(*)>",
+
+        // ============ 列表查询 (返回 List/ParceledListSlice) ============
+
+        // List<ResolveInfo>
+        "<*: * queryIntentActivities(*)>",
+        "<*: * queryIntentActivitiesAsUser(*)>",
+        "<*: * queryIntentActivityOptions(*)>",
+        "<*: * queryIntentReceivers(*)>",
+        "<*: * queryBroadcastReceivers(*)>",
+        "<*: * queryBroadcastReceiversAsUser(*)>",
+        "<*: * queryIntentServices(*)>",
+        "<*: * queryIntentServicesAsUser(*)>",
+        "<*: * queryIntentContentProviders(*)>",
+        "<*: * queryIntentContentProvidersAsUser(*)>",
+
+        // List<PackageInfo>
+//        "<*: * getInstalledPackages(*)>",
+//        "<*: * getInstalledPackagesAsUser(*)>",
+//        "<*: * getPackagesHoldingPermissions(*)>",
+
+        // List<ApplicationInfo>
+//        "<*: * getInstalledApplications(*)>",
+//        "<*: * getInstalledApplicationsAsUser(*)>",
+//        "<*: * getPersistentApplications(*)>",
+
+        // List<ProviderInfo>
+        // "<*: * queryContentProviders(*)>",
+
+        // // List<InstrumentationInfo>
+        // "<*: * queryInstrumentation(*)>",
+        // "<*: * queryInstrumentationAsUser(*)>",
+
+        // List<PermissionInfo>
+        // "<*: * queryPermissionsByGroup(*)>",
+
+        // List<PermissionGroupInfo>
+        // "<*: * getAllPermissionGroups(*)>",
+
+        // List<ModuleInfo>
+        // "<*: * getInstalledModules(*)>",
+
+        // List<FeatureInfo>
+        // "<*: * getSystemAvailableFeatures(*)>",
+
+        // List<IntentFilterVerificationInfo>
+        // "<*: * getIntentFilterVerifications(*)>",
+      ]
+    },
+
+
+    "sink": {
+      // "<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int,android.content.res.Resources$Theme)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.graphics.drawable.Drawable getDrawableForDensity(int,int,android.content.res.Resources$Theme)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getString(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getString(int,java.lang.Object[])>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.CharSequence getText(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.CharSequence getText(int,java.lang.CharSequence)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.CharSequence getQuantityText(int,int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getQuantityString(int,int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getQuantityString(int,int,java.lang.Object[])>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int getColor(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int getColor(int,android.content.res.Resources$Theme)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.ColorStateList getColorStateList(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.ColorStateList getColorStateList(int,android.content.res.Resources$Theme)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.XmlResourceParser getXml(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.XmlResourceParser getLayout(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.XmlResourceParser getAnimation(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: float getDimension(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int getDimensionPixelSize(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int getDimensionPixelOffset(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int getInteger(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: boolean getBoolean(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getResourceName(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getResourceTypeName(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getResourceEntryName(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String getResourcePackageName(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: float getFloat(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.graphics.Typeface getFont(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: int[] getIntArray(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.String[] getStringArray(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.lang.CharSequence[] getTextArray(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.TypedArray obtainTypedArray(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.io.InputStream openRawResource(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: java.io.InputStream openRawResource(int,android.util.TypedValue)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.content.res.AssetFileDescriptor openRawResourceFd(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: android.graphics.Movie getMovie(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: void getValue(int,android.util.TypedValue,boolean)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.res.Resources: void getValueForDensity(int,int,android.util.TypedValue,boolean)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: android.graphics.drawable.Drawable getDrawable(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: java.lang.String getString(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: java.lang.String getString(int,java.lang.Object[])>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: java.lang.CharSequence getText(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: int getColor(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: android.content.res.ColorStateList getColorStateList(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.Context: void setTheme(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getDrawable(java.lang.String,int,android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.content.pm.PackageManager: java.lang.CharSequence getText(java.lang.String,int,android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.content.pm.PackageManager: android.content.res.Resources getResourcesForApplication(android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.content.res.Resources getResourcesForApplication(java.lang.String)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.content.res.Resources getResourcesForActivity(android.content.ComponentName)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getActivityIcon(android.content.ComponentName)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getActivityIcon(android.content.Intent)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getActivityLogo(android.content.ComponentName)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getActivityBanner(android.content.ComponentName)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getApplicationIcon(android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getApplicationIcon(java.lang.String)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getApplicationLogo(android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getApplicationBanner(android.content.pm.ApplicationInfo)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getDefaultActivityIcon()>": {
+      //   "TaintCheck": []
+      // },
+      // "<android.content.pm.PackageManager: android.graphics.drawable.Drawable getUserBadgedIcon(android.graphics.drawable.Drawable,android.os.UserHandle)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.content.pm.PackageItemInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.PackageItemInfo: android.graphics.drawable.Drawable loadLogo(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.PackageItemInfo: android.graphics.drawable.Drawable loadBanner(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.PackageItemInfo: android.graphics.drawable.Drawable loadUnbadgedIcon(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.ApplicationInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.ApplicationInfo: android.graphics.drawable.Drawable loadLogo(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.ApplicationInfo: android.graphics.drawable.Drawable loadBanner(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.content.pm.ApplicationInfo: android.graphics.drawable.Drawable loadUnbadgedIcon(android.content.pm.PackageManager)>": {
+      //   "TaintCheck": ["@this"]
+      // },
+      // "<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.view.LayoutInflater: android.view.View inflate(android.content.res.XmlResourceParser,android.view.ViewGroup)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.view.LayoutInflater: android.view.View inflate(android.content.res.XmlResourceParser,android.view.ViewGroup,boolean)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.view.animation.AnimationUtils: android.view.animation.Animation loadAnimation(android.content.Context,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.view.animation.AnimationUtils: android.view.animation.LayoutAnimationController loadLayoutAnimation(android.content.Context,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.view.animation.AnimationUtils: android.view.animation.Interpolator loadInterpolator(android.content.Context,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.graphics.drawable.Drawable: android.graphics.drawable.Drawable createFromResourceStream(android.content.res.Resources,android.util.TypedValue,java.io.InputStream,java.lang.String)>": {
+      //   "TaintCheck": ["p0", "p1"]
+      // },
+      // "<android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int,android.graphics.BitmapFactory$Options)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.media.SoundPool: int load(android.content.Context,int,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.media.MediaPlayer: android.media.MediaPlayer create(android.content.Context,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.media.MediaPlayer: android.media.MediaPlayer create(android.content.Context,int,android.media.AudioAttributes,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.media.RingtoneManager: android.net.Uri getActualDefaultRingtoneUri(android.content.Context,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.app.Notification$Builder: android.app.Notification$Builder setSmallIcon(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.app.Notification$Builder: android.app.Notification$Builder setLargeIcon(android.graphics.Bitmap)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.widget.RemoteViews: void setImageViewResource(int,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.widget.RemoteViews: void setTextViewText(int,java.lang.CharSequence)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      // "<android.widget.ImageView: void setImageResource(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.widget.TextView: void setText(int)>": {
+      //   "TaintCheck": ["p0"]
+      // },
+      // "<android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>": {
+      //   "TaintCheck": ["p1"]
+      // },
+      "<*: * loadXmlMetaData(*)>": {
+        "TaintCheck": ["@this"]
+      },
+      // "<*: * loadDescription(*)>": {
+      //     "TaintCheck": ["@this"]
+      //   },
+    }
+  },
+ 
+}

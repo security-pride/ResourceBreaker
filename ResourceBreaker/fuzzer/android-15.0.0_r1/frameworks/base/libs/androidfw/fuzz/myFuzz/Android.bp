@@ -1,0 +1,32 @@
+cc_binary_host {
+    name: "arsc_fuzzer_host",
+
+    srcs: ["arsc_fuzzer_host.cpp"],
+
+    sanitize: {
+        address: true,
+        undefined: true,
+    },
+
+    cflags: [
+        "-O2",
+        "-g",
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-parameter",
+    ],
+
+    static_libs: [
+        "libandroidfw",
+        "libutils",
+        "libcutils",
+        "liblog",
+        "libbase",
+        "libziparchive",
+        "libz",
+        "libincfs-utils",
+        "libpng",
+    ],
+
+    // 删除 include_dirs，静态库会自动导出头文件
+}
